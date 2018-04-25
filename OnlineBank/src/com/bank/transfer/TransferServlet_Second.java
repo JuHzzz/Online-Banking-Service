@@ -25,44 +25,44 @@ public class TransferServlet_Second extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Map<String, String> map = new HashMap<String,String>();
-		String card_2 = session.getAttribute("get_card").toString();//ÊÕ¿î¿¨ºÅ
-		String card_1 = session.getAttribute("pay_card").toString();//¸¶¿î¿¨ºÅ
-		String get_name = session.getAttribute("get_name").toString();//ÊÕ¿îÈËĞÕÃû
+		String card_2 = session.getAttribute("get_card").toString();//æ”¶æ¬¾å¡å·
+		String card_1 = session.getAttribute("pay_card").toString();//ä»˜æ¬¾å¡å·
+		String get_name = session.getAttribute("get_name").toString();//æ”¶æ¬¾äººå§“å
 		String amount = session.getAttribute("amount").toString();
 		response.setContentType("text/html;charset=utf-8");
-		double amounter = Double.parseDouble(amount);// ×ªÕË½ğ¶î
-		String password = request.getParameter("user_password");	//¸¶¿îÃÜÂë
+		double amounter = Double.parseDouble(amount);// è½¬è´¦é‡‘é¢
+		String password = request.getParameter("user_password");	//ä»˜æ¬¾å¯†ç 
 		PrintWriter out = response.getWriter();
 		if(count < 3){
 			if(CheckPasswordIsRight.checkPassword(card_1, password)==false){
 				count++;
 				out.println(
-						"<script language = 'javascript'>alert('ÃÜÂëÊäÈë´íÎó');window.location.href = 'transfer2.jsp'</script>");
+						"<script language = 'javascript'>alert('å¯†ç è¾“å…¥é”™è¯¯');window.location.href = 'transfer2.jsp'</script>");
 			}else{
-				//¿ªÊ¼×ªÕÊÇ°£¬ÏÈĞ´ÈÕÖ¾
-				map.put("pay_card", card_1);	//¸¶¿î¿¨ºÅ
-				map.put("get_card", card_2);    //ÊÕ¿î¿¨ºÅ
-				map.put("get_name", get_name);	//ÊÕ¿îĞÕÃû
+				//å¼€å§‹è½¬å¸å‰ï¼Œå…ˆå†™æ—¥å¿—
+				map.put("pay_card", card_1);	//ä»˜æ¬¾å¡å·
+				map.put("get_card", card_2);    //æ”¶æ¬¾å¡å·
+				map.put("get_name", get_name);	//æ”¶æ¬¾å§“å
 				map.put("balance_amount", amount);
 				Log.isLogIn(map);
-				//ÃÜÂëÕıÈ·,Ö´ĞĞ´æ´¢¹ı³Ì
+				//å¯†ç æ­£ç¡®,æ‰§è¡Œå­˜å‚¨è¿‡ç¨‹
 				if(Transfer.transferIsSuccess(card_2, card_1, amounter)==false){
-					//³öÏÖÊÂÎñÄÚ²¿¹ÊÕÏ
+					//å‡ºç°äº‹åŠ¡å†…éƒ¨æ•…éšœ
 					out.println(
-							"<script language = 'javascript'>alert('ÏµÍ³´íÎó');window.location.href = 'index.html'</script>");
+							"<script language = 'javascript'>alert('ç³»ç»Ÿé”™è¯¯');window.location.href = 'index.html'</script>");
 					session.invalidate();
 				}else{
 				
-					//×ªÕË³É¹¦
+					//è½¬è´¦æˆåŠŸ
 					out.println(
-							"<script language = 'javascript'>alert('×ªÕË³É¹¦£¡');window.location.href = 'index.html'</script>");
+							"<script language = 'javascript'>alert('è½¬è´¦æˆåŠŸï¼');window.location.href = 'index.html'</script>");
 					session.invalidate();
 				}
 				
 				
 			}
 		}else{
-			//ÃÜÂëÊäÈë´íÎó´ÎÊı³¬¹ı3´Î£¬ÍË³ö×ªÕË
+			//å¯†ç è¾“å…¥é”™è¯¯æ¬¡æ•°è¶…è¿‡3æ¬¡ï¼Œé€€å‡ºè½¬è´¦
 			out.println(
 					"<script language = 'javascript'>alert('Password input error 3 times!  You can not transfer the money today.');window.location.href = 'index.html'</script>");
 			session.invalidate();
@@ -73,3 +73,4 @@ public class TransferServlet_Second extends HttpServlet {
 		doGet(req, resp);
 	}
 }
+ 
