@@ -14,7 +14,7 @@ public class CheckIsDigital {
 		}
 	}
 	
-	// ÀûÓÃPatternÑéÖ¤ÊÖ»úºÅÊÇ·ñÊÇ´¿Êı×Ö true:ÊÇ false£º²»ÊÇ
+	// åˆ©ç”¨PatternéªŒè¯æ‰‹æœºå·æ˜¯å¦æ˜¯çº¯æ•°å­— true:æ˜¯ falseï¼šä¸æ˜¯
 		private static boolean checkPhoneIsNum(String count) {
 
 			Pattern p = Pattern.compile("[0-9]{1,}");
@@ -22,3 +22,4 @@ public class CheckIsDigital {
 			return m.matches();
 		}
 }
+ 
