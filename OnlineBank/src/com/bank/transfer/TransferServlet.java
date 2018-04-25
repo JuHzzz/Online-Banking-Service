@@ -19,50 +19,50 @@ public class TransferServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String user_pay_card = request.getParameter("user_pay_card"); // ¸¶¿î¿¨ºÅ
-		String amount = request.getParameter("amount"); // ×ªÕË½ğ¶î
-		String user_get_card = request.getParameter("user_get_card"); // ÊÕ¿î¿¨ºÅ
-		String user_get_name = request.getParameter("user_get_name"); // ÊÕ¿îÈË
-		String user_get_phone = request.getParameter("user_get_phone"); // ÊÕ¿îÈËÊÖ»úºÅ
+		String user_pay_card = request.getParameter("user_pay_card"); // ä»˜æ¬¾å¡å·
+		String amount = request.getParameter("amount"); // è½¬è´¦é‡‘é¢
+		String user_get_card = request.getParameter("user_get_card"); // æ”¶æ¬¾å¡å·
+		String user_get_name = request.getParameter("user_get_name"); // æ”¶æ¬¾äºº
+		String user_get_phone = request.getParameter("user_get_phone"); // æ”¶æ¬¾äººæ‰‹æœºå·
 		String tokenValue = request.getParameter("tokenValue");
 		Object token = session.getAttribute("token5");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		// ÊÇ·ñÖØ¸´Ìá½»
+		// æ˜¯å¦é‡å¤æäº¤
 		if (token != null && token.equals(tokenValue)) {
 
-			// ĞÅÏ¢ÊÇ·ñÎª¿Õ
+			// ä¿¡æ¯æ˜¯å¦ä¸ºç©º
 			if ("".equals(user_get_card) || "".equals(user_pay_card) || "".equals(amount) || "".equals(user_get_name)
 					|| "".equals(user_get_name)) {
 				out.println(
-						"<script language = 'javascript'>alert('ÇëÍêÉÆÄãµÄĞÅÏ¢.');window.location.href = 'transfer.jsp'</script>");
+						"<script language = 'javascript'>alert('è¯·å®Œå–„ä½ çš„ä¿¡æ¯.');window.location.href = 'transfer.jsp'</script>");
 			} else {
-				// ¿¨ºÅÊÇ·ñ´æÔÚ
+				// å¡å·æ˜¯å¦å­˜åœ¨
 				if (CheckCard.checkCard(user_pay_card) == false || CheckCard.checkCard(user_get_card) == false) {
 					out.println(
-							"<script language = 'javascript'>alert('¸¶¿î¿¨ºÅ»òÊÕ¿î¿¨ºÅ²»´æÔÚ,ÇëÖØĞÂÊäÈë.');window.location.href = 'transfer.jsp'</script>");
+							"<script language = 'javascript'>alert('ä»˜æ¬¾å¡å·æˆ–æ”¶æ¬¾å¡å·ä¸å­˜åœ¨,è¯·é‡æ–°è¾“å…¥.');window.location.href = 'transfer.jsp'</script>");
 				} else {
-					//²»ÄÜ¸ø×Ô¼º×ªÕË
+					//ä¸èƒ½ç»™è‡ªå·±è½¬è´¦
 					if (user_get_card.equals(user_pay_card)) {
 						out.println(
-								"<script language = 'javascript'>alert('ÊÕ¿î¿¨ºÅÓĞÎó,ÇëÖØĞÂÊäÈë.');window.location.href = 'transfer.jsp'</script>");
+								"<script language = 'javascript'>alert('æ”¶æ¬¾å¡å·æœ‰è¯¯,è¯·é‡æ–°è¾“å…¥.');window.location.href = 'transfer.jsp'</script>");
 
 					} else {
 
-						// ÊÕ¿îÈËĞÅÏ¢ÊÇ·ñÕıÈ·
+						// æ”¶æ¬¾äººä¿¡æ¯æ˜¯å¦æ­£ç¡®
 						if (CheckGeterInformation.checkInformation(user_get_card, user_get_name,
 								user_get_phone) == false) {
 							out.println(
-									"<script language = 'javascript'>alert('ÇëÕıÈ·ÊäÈëÊÕ¿îÈËĞÅÏ¢.');window.location.href = 'transfer.jsp'</script>");
+									"<script language = 'javascript'>alert('è¯·æ­£ç¡®è¾“å…¥æ”¶æ¬¾äººä¿¡æ¯.');window.location.href = 'transfer.jsp'</script>");
 
 						} else {
-							// ²éÑ¯×ªÕË½ğ¶îÊÇ·ñºÏ·¨
+							// æŸ¥è¯¢è½¬è´¦é‡‘é¢æ˜¯å¦åˆæ³•
 							if (CheckBalance.checkBalance(amount, user_pay_card) == false) {
 								out.println(
-										"<script language = 'javascript'>alert('ÕË»§Óà¶î²»×ã');window.location.href = 'transfer.jsp'</script>");
+										"<script language = 'javascript'>alert('è´¦æˆ·ä½™é¢ä¸è¶³');window.location.href = 'transfer.jsp'</script>");
 
 							} else {
-								// ×ªµ½ÃÜÂëÖ§¸¶Ò³Ãæ,½«ÇëÇó×ª·¢µ½×ªÕËÖ§¸¶µÚ¶ş¼¶Ò³Ãæ
+								// è½¬åˆ°å¯†ç æ”¯ä»˜é¡µé¢,å°†è¯·æ±‚è½¬å‘åˆ°è½¬è´¦æ”¯ä»˜ç¬¬äºŒçº§é¡µé¢
 								session.setAttribute("pay_card", user_pay_card);
 								session.setAttribute("amount", amount);
 								session.setAttribute("get_card", user_get_card);
@@ -80,7 +80,7 @@ public class TransferServlet extends HttpServlet {
 				}
 			}
 		} else {
-			// ÖØ¸´Ìá½»
+			// é‡å¤æäº¤
 			out.println(
 					"<script language = 'javascript'>alert('Sorry! You have submitted information! Please do not submit again!!!!');window.location.href='index.html';</script>");
 
@@ -88,6 +88,6 @@ public class TransferServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doPost(req, resp);
+		doPost(req, resp); 
 	}
 }
