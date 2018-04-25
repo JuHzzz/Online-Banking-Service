@@ -23,26 +23,26 @@ public class PaymentServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		String phoneNum = request.getParameter("phone");// »ñÈ¡µç»°ºÅÂë
-		String count = request.getParameter("count");// »ñÈ¡³äÖµ½ğ¶î
+		String phoneNum = request.getParameter("phone");// è·å–ç”µè¯å·ç 
+		String count = request.getParameter("count");// è·å–å……å€¼é‡‘é¢
 		String tokenValue = request.getParameter("tokenValue");
 		Object token = session.getAttribute("token7");
 		response.setContentType("text/html;charset=utf-8");
-		// ÊÇ·ñÖØ¸´Ìá½»
+		// æ˜¯å¦é‡å¤æäº¤
 		if (token != null && token.equals(tokenValue)) {
-			// ÊÇ·ñÎª¿Õ
+			// æ˜¯å¦ä¸ºç©º
 			if ("".equals(phoneNum) || "".equals(count)) {
 				out.print(
-						"<script language='javascript'>alert('ÇëÍêÉÆÄúµÄĞÅÏ¢²¢ÖØĞÂÊäÈë');window.location.href='payment_1.jsp';</script>");
+						"<script language='javascript'>alert('è¯·å®Œå–„æ‚¨çš„ä¿¡æ¯å¹¶é‡æ–°è¾“å…¥');window.location.href='payment_1.jsp';</script>");
 
 			} else {
-				// ¶Ôµç»°ºÅÂëºÍ³äÖµ½ğ¶î½øĞĞ¸ñÊ½ÑéÖ¤
+				// å¯¹ç”µè¯å·ç å’Œå……å€¼é‡‘é¢è¿›è¡Œæ ¼å¼éªŒè¯
 				if (CheckPhone.checkPhone(phoneNum) == false || CheckIsDigital.isDital(count) == false) {
 					out.print(
-							"<script language='javascript'>alert('µç»°ºÅÂë»ò³äÖµ½ğ¶î²»ºÏ·¨!ÇëÖØĞÂÊäÈë');window.location.href='payment_1.jsp';</script>");
+							"<script language='javascript'>alert('ç”µè¯å·ç æˆ–å……å€¼é‡‘é¢ä¸åˆæ³•!è¯·é‡æ–°è¾“å…¥');window.location.href='payment_1.jsp';</script>");
 
 				} else {
-					// ¸ñÊ½ÕıÈ·£¬½«³äÖµĞÅÏ¢Ğ´Èësession
+					// æ ¼å¼æ­£ç¡®ï¼Œå°†å……å€¼ä¿¡æ¯å†™å…¥session
 					session.setAttribute("phone", phoneNum);
 					session.setAttribute("count", count);
 					out.print("<script language='javascript'>window.location.href='payment_2.jsp';</script>");
@@ -53,7 +53,7 @@ public class PaymentServlet extends HttpServlet {
 
 		} else {
 			out.print(
-					"<script language='javascript'>alert('ÄúÒÑÌá½»¶©µ¥£¡ÇëÎğÖØ¸´Ìá½»£¡');window.location.href='payment_2.jsp';</script>");
+					"<script language='javascript'>alert('æ‚¨å·²æäº¤è®¢å•ï¼è¯·å‹¿é‡å¤æäº¤ï¼');window.location.href='payment_2.jsp';</script>");
 
 		}
 
@@ -63,4 +63,4 @@ public class PaymentServlet extends HttpServlet {
 		doPost(req, resp);
 	}
 
-}
+} 
