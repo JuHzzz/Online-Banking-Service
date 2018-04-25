@@ -30,14 +30,14 @@ public class Log {
 		get_name = map.get("get_name");
 		String amount = map.get("balance_amount");
 		balance_amount = Double.parseDouble(amount);
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//ÉèÖÃÈÕÆÚ¸ñÊ½
-		dateTime = df.format(new Date());// new Date()Îª»ñÈ¡µ±Ç°ÏµÍ³Ê±¼ä
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//è®¾ç½®æ—¥æœŸæ ¼å¼
+		dateTime = df.format(new Date());// new Date()ä¸ºè·å–å½“å‰ç³»ç»Ÿæ—¶é—´
 		
 		Connection con = Onload.getCon();
 		PreparedStatement ps = null;
 		String sql = "insert into tb_log values (?,?,?,?,?)";
 		try {
-			ps = con.prepareStatement(sql);
+			ps = con.prepareStatement(sql); 
 			ps.setString(1 , pay_card);
 			ps.setString(2, get_card);
 			ps.setDouble(3, balance_amount);
