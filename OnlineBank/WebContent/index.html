@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>主页</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<!-- css -->
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet"
+	href="simple-line-icons/css/simple-line-icons.css">
+	
+<link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href="css/flexslider.css" rel="stylesheet" />
+<link href="js/owl-carousel/owl.carousel.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet" />
+
+
+</head>
+<body>
+	<div id="wrapper" class="home-page">
+		<!-- start header -->
+		<header>
+			<div class="navbar navbar-default navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target=".navbar-collapse">
+							<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="index.html"><img
+							src="img/logo.png" alt="logo" /></a>
+					</div>
+					<div class="navbar-collapse collapse ">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="index.html">主页</a></li>
+							<li class="dropdown"><a href="#" data-toggle="dropdown"
+								class="dropdown-toggle">关于我们 <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="https://gitee.com/MyTreasure/events">我的项目库</a></li>
+									<li><a href="#">团队</a></li>
+									<li><a href="#">新闻</a></li>
+									<li><a href="#">投资者</a></li>
+								</ul></li>
+							<li><a href="#">服务</a></li>
+							<li><a href="#">投资</a></li>
+							<li><a href="#">定价</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- end header -->
+		<section id="banner">
+
+			<!-- Slider -->
+			<div id="main-slider" class="flexslider">
+				<ul class="slides">
+					<li><img src="img/slides/1.jpg" alt="flexslider" />
+						<div class="flex-caption">
+							<h2>银行管理系统</h2>
+							<p>这个银行刚做出来,欢迎大家提意见</p>
+						</div></li>
+					<li><img src="img/slides/2.jpg" alt="flexslider" />
+						<div class="flex-caption">
+							<h3>FINANCIAL</h3>
+							<p>您的建议是我们进步的阶梯</p>
+						</div></li>
+				</ul>
+			</div>
+
+			<!-- end slider -->
+
+		</section>
+		<section class="jumbobox">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div>
+							<h1>服务宗旨</h1>
+							<h3>用我们的智慧 , 守护您的财富</h3>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+			<div class="container">
+				<div class="row">
+					<div class="skill-home">
+						<div class="skill-home-solid clearfix">
+							<div class="col-md-3 text-center">
+								<div class="box">
+									<span class="icons c1"><i class="icon-settings icons"></i></span>
+									<div class="box-area">
+										<h3>行卡办理</h3>
+										<p>通过此功能办理您的私人网上银行,您需填写个人信息,设置支付密码.</p>
+										<p>
+											<a href="register_1.jsp">Bank Card</a>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 text-center">
+								<div class="box">
+									<span class="icons c2"><i class="icon-login icons"></i></span>
+									<div class="box-area">
+										<h3>转账汇款</h3>
+										<p>通过次功能向您的亲朋好友等私人网银转账汇款.</p>
+										<p>
+											<a href="transfer.jsp">Transfer remittance</a>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 text-center">
+								<div class="box">
+									<span class="icons c3"><i class="icon-user icons"></i></span>
+									<div class="box-area">
+										<h3>查询账户</h3>
+										<p>包括账户的余额查询、历史明细查询,实时记录您的收/支明细</p>
+										<p>
+											<a href="query.jsp">Query account</a>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 text-center">
+								<div class="box">
+									<span class="icons c4"><i class="icon-home icons"></i></span>
+									<div class="box-area">
+										<h3>充值缴费</h3>
+										<p>通过本功能您可以通过您的银行卡为您的手机加油.</p>
+										<p>
+											<a href="payment_1.jsp">Top-up payment</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+
+	<section class="clients">
+		<div class="container">
+			<div class="clients-slider">
+				<h3 class="header-title">我们的客户</h3>
+				<div class="clients-control pull-right">
+					<a class="prev btn btn-gray btn-xs"><i
+						class="fa fa-angle-left fa-2x"></i></a> <a
+						class="next btn btn-gray btn-xs"><i
+						class="fa fa-angle-right fa-2x"></i></a>
+				</div>
+				<span class="line"></span>
+				<div id="clients-slider" class="owl-carousel">
+					<div class="item">
+						<a href="#"> <img alt="Our Client"
+							src="img/OurClients/amazon-grey.png"> <img alt="Our Client"
+							src="img/OurClients/amazon.png" class="colored">
+						</a>
+					</div>
+					<div class="item">
+						<a href="#"> <img alt="Our Client"
+							src="img/OurClients/cisco_grey.png"> <img alt="Our Client"
+							src="img/OurClients/cisco.png" class="colored">
+						</a>
+					</div>
+					<div class="item">
+						<a href="#"> <img alt="Our Client"
+							src="img/OurClients/cityairline-grey.png"> <img
+							alt="Our Client" src="img/OurClients/cityairline.png"
+							class="colored">
+						</a>
+					</div>
+					<div class="item">
+						<a href="#"> <img alt="Our Client"
+							src="img/OurClients/dell-grey.png"> <img alt="Our Client"
+							src="img/OurClients/dell.png" class="colored">
+						</a>
+					</div>
+					<div class="item">
+						<a href="#"> <img alt="Our Client"
+							src="img/OurClients/ebay-grey.png"> <img alt="Our Client"
+							src="img/OurClients/ebay.png" class="colored">
+						</a>
+					</div>
+					<div class="item">
+						<a href="#"> <img alt="Our Client"
+							src="img/OurClients/google-grey.png"> <img alt="Our Client"
+							src="img/OurClients/google.png" class="colored">
+						</a>
+					</div>
+					<div class="item">
+						<a href="#"> <img alt="Our Client"
+							src="img/OurClients/hp_grey.png"> <img alt="Our Client"
+							src="img/OurClients/hp.png" class="colored">
+						</a>
+					</div>
+					<div class="item">
+						<a href="#"> <img alt="Our Client"
+							src="img/OurClients/igneus_grey.png"> <img alt="Our Client"
+							src="img/OurClients/igneus.png" class="colored">
+						</a>
+					</div>
+					<div class="item">
+						<a href="#"> <img alt="Our Client"
+							src="img/OurClients/natural_grey.png"> <img
+							alt="Our Client" src="img/OurClients/natural.png" class="colored">
+						</a>
+					</div>
+					<div class="item">
+						<a href="#"> <img alt="Our Client"
+							src="img/OurClients/shell_grey.png"> <img alt="Our Client"
+							src="img/OurClients/shell.png" class="colored">
+						</a>
+					</div>
+					<div class="item">
+						<a href="#"> <img alt="Our Client"
+							src="img/OurClients/vadafone_grey.png"> <img
+							alt="Our Client" src="img/OurClients/vadafone.png"
+							class="colored">
+						</a>
+					</div>
+					<div class="item">
+						<a href="#"> <img alt="Our Client"
+							src="img/OurClients/walmart_grey.png"> <img
+							alt="Our Client" src="img/OurClients/walmart.png" class="colored">
+						</a>
+					</div>
+				</div>
+				<div class="fullwidth margin-bottom-20"></div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="widget">
+						<h5 class="widgetheading">联系我们</h5>
+						<address>
+							<strong>Loud company Inc</strong><br> JC Main Road, Near
+							Silnile tower<br> Pin-21542 NewYork US.
+						</address>
+						<p>
+							<i class="icon-phone"></i> (123) 456-789 - 1255-12584 <br> <i
+								class="icon-envelope-alt"></i> email@domainname.com
+						</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="widget">
+						<h5 class="widgetheading">Quick Links</h5>
+						<ul class="link-list">
+							<li><a href="#">Latest Events</a></li>
+							<li><a href="#">Terms and conditions</a></li>
+							<li><a href="#">Privacy policy</a></li>
+							<li><a href="#">Career</a></li>
+							<li><a href="#">Contact us</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="widget">
+						<h5 class="widgetheading">Latest posts</h5>
+						<ul class="link-list">
+							<li><a href="#">Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit.</a></li>
+							<li><a href="#">Pellentesque et pulvinar enim. Quisque
+									at tempor ligula</a></li>
+							<li><a href="#">Natus error sit voluptatem accusantium
+									doloremque</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="widget">
+						<h5 class="widgetheading">Recent News</h5>
+						<ul class="link-list">
+							<li><a href="#">Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit.</a></li>
+							<li><a href="#">Pellentesque et pulvinar enim. Quisque
+									at tempor ligula</a></li>
+							<li><a href="#">Natus error sit voluptatem accusantium
+									doloremque</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="sub-footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="copyright">
+							<p>
+								Copyright &copy; 2018.Company name All rights reserved.<a
+									target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+	<!-- javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.fancybox.pack.js"></script>
+	<script src="js/jquery.fancybox-media.js"></script>
+	<script src="js/portfolio/jquery.quicksand.js"></script>
+	<script src="js/portfolio/setting.js"></script>
+	<script src="js/jquery.flexslider.js"></script>
+	<script src="js/animate.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/owl-carousel/owl.carousel.js"></script>
+</body>
+</html>
