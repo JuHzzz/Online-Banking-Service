@@ -96,4 +96,4 @@ public class RegisterServlet extends HttpServlet {
 		doPost(req, resp);
 	}
 
-} 
+}  
