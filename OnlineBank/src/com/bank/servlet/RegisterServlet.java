@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 public class RegisterServlet extends HttpServlet {
 
 	/**
-	 * ×¢²áĞÅÏ¢µÚÒ»Ò³µÄServlet
+	 * æ³¨å†Œä¿¡æ¯ç¬¬ä¸€é¡µçš„Servlet
 	 */
 	private static final long serialVersionUID = 1L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -31,36 +31,36 @@ public class RegisterServlet extends HttpServlet {
 		Map<String, String> map = new HashMap<String, String>();
 		Object token = session.getAttribute("token2");
 		if (token != null && token.equals(tokenValue)) {
-			// µÚÒ»´ÎÌá½»
+			// ç¬¬ä¸€æ¬¡æäº¤
 			if ("".equals(user_name.trim())||user_name==null || "".equals(user_id.trim())||user_id==null || "".equals(user_phone.trim())
 					||user_mail ==null	|| "".equals(user_mail.trim())||user_mail ==null || "".equals(user_sex)||user_sex ==null) {
 				out.print(
-						"<script language='javascript'>alert('ÇëÖØĞÂÍêÉÆÄãµÄĞÅÏ¢');window.location.href='register_1.jsp';</script>");
+						"<script language='javascript'>alert('è¯·é‡æ–°å®Œå–„ä½ çš„ä¿¡æ¯');window.location.href='register_1.jsp';</script>");
 				System.out.println(token);
 			} else {
 
-				// ¼ì²â´ËÓÃ»§IdÊÇ·ñÒÑ¾­´æÔÚ£¬ÏŞÖÆÃ¿Ò»¸öÓÃ»§idÖ»ÄÜÔÚÎÒĞĞ°ìÀíÒ»ÕÅ´¢Ğî¿¨
+				// æ£€æµ‹æ­¤ç”¨æˆ·Idæ˜¯å¦å·²ç»å­˜åœ¨ï¼Œé™åˆ¶æ¯ä¸€ä¸ªç”¨æˆ·idåªèƒ½åœ¨æˆ‘è¡ŒåŠç†ä¸€å¼ å‚¨è“„å¡
 				if (CheckIdIsExists.checkIDIsExists(user_id) == false) {
 					out.print(
-							"<script language='javascript'>alert('¶Ô²»Æğ£¡ÄúÒÑ¾­ÓµÓĞÎÒĞĞµÄ´¢Ğî¿¨£¡Ã¿Î»ÓÃ»§Ö»ÄÜÆ¾½èÉí·İÖ¤°ìÀíÒ»ÕÅ¿¨.');window.location.href='register_1.jsp';</script>");
+							"<script language='javascript'>alert('å¯¹ä¸èµ·ï¼æ‚¨å·²ç»æ‹¥æœ‰æˆ‘è¡Œçš„å‚¨è“„å¡ï¼æ¯ä½ç”¨æˆ·åªèƒ½å‡­å€Ÿèº«ä»½è¯åŠç†ä¸€å¼ å¡.');window.location.href='register_1.jsp';</script>");
 				} else {
 
-					// ¼ì²âÓÃ»§ĞÕÃû¸ñÊ½ÊÇ·ñÓĞ´í
-					// ¼ì²âÓÃ»§Éí·İÖ¤ºÅÂëÊÇ·ñÓĞÎó
-					// ¼ì²âÓÃ»§ÊÖ»úºÅÊÇ·ñÓĞÎó
-					// ÑéÖ¤ÓÊÏäÊÇ·ñÓĞÎó
+					// æ£€æµ‹ç”¨æˆ·å§“åæ ¼å¼æ˜¯å¦æœ‰é”™
+					// æ£€æµ‹ç”¨æˆ·èº«ä»½è¯å·ç æ˜¯å¦æœ‰è¯¯
+					// æ£€æµ‹ç”¨æˆ·æ‰‹æœºå·æ˜¯å¦æœ‰è¯¯
+					// éªŒè¯é‚®ç®±æ˜¯å¦æœ‰è¯¯
 					
 					if (CheckName.checkName(user_name) == false || CheckId.checkIdcard(user_id) == false
 							|| CheckPhone.checkPhone(user_phone) == false || CheckMail.checkMail(user_mail) == false) {
 
 						out.print(
-								"<script language='javascript'>alert('ĞÅÏ¢ÓĞÎó£¡ÇëÖØĞÂÊäÈë£¡');window.location.href='register_1.jsp';</script>");
+								"<script language='javascript'>alert('ä¿¡æ¯æœ‰è¯¯ï¼è¯·é‡æ–°è¾“å…¥ï¼');window.location.href='register_1.jsp';</script>");
 					} else {
-						//Éú³ÉÒøĞĞ¿¨ºÅ
+						//ç”Ÿæˆé“¶è¡Œå¡å·
 						String user_card = null;
-						System.out.println("³õÊ¼»¯£º"+user_card);
+						System.out.println("åˆå§‹åŒ–ï¼š"+user_card);
 						user_card = new CreateNewCard().createNewCard();
-						System.out.println("´´½¨ĞÂ¿¨:"+user_card);
+						System.out.println("åˆ›å»ºæ–°å¡:"+user_card);
 						map.put("user_name", user_name);
 						map.put("user_id", user_id);
 						map.put("user_phone", user_phone);
@@ -71,7 +71,7 @@ public class RegisterServlet extends HttpServlet {
 						session.setAttribute("map",map);
 						session.setAttribute("user_Card", user_card);
 						System.out.println(map);
-						System.out.println("mapÖĞ¿¨ºÅ:"+map.get("user_card"));
+						System.out.println("mapä¸­å¡å·:"+map.get("user_card"));
 						out.print("<script language='javascript'>window.location.href='register_2.jsp';</script>");
 						session.removeAttribute("token2");
 						
@@ -79,16 +79,16 @@ public class RegisterServlet extends HttpServlet {
 				}
 			}
 		} else {
-			// ÖØ¸´Ìá½»
+			// é‡å¤æäº¤
 			out.println(
-					"<script language = 'javascript'>alert('¶Ô²»Æğ£¡ÄúÒÑ¾­Ìá½»¹ıĞÅÏ¢£¬ÇëÎğÖØ¸´Ìá½»!!!!');window.location.href='register_2.jsp';</script>");
+					"<script language = 'javascript'>alert('å¯¹ä¸èµ·ï¼æ‚¨å·²ç»æäº¤è¿‡ä¿¡æ¯ï¼Œè¯·å‹¿é‡å¤æäº¤!!!!');window.location.href='register_2.jsp';</script>");
 			session.removeAttribute("user_card");
 		}
 
 	}
 
 	/**
-	 * ÑéÖ¤°ì¿¨ÈËĞÅÏ¢ÊÇ·ñºÏ·¨
+	 * éªŒè¯åŠå¡äººä¿¡æ¯æ˜¯å¦åˆæ³•
 	 */
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -96,4 +96,4 @@ public class RegisterServlet extends HttpServlet {
 		doPost(req, resp);
 	}
 
-}
+} 
