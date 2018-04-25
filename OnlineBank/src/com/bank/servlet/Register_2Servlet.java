@@ -34,27 +34,27 @@ public class Register_2Servlet extends HttpServlet {
 		if (num < 9) {
 			if (token != null && token.equals(tokenValue)) {
 
-				// ÑéÖ¤ÃÜÂëºÏ·¨ĞÔ£ºÊÇ·ñÎª¿Õ£¬³¤¶ÈÊÇ·ñÊÇ6Î»£¬ÊÇ·ñÊÇ´¿Êı×Ö£¬Á½´ÎÊäÈëÊÇ·ñÒ»ÖÂ
+				// éªŒè¯å¯†ç åˆæ³•æ€§ï¼šæ˜¯å¦ä¸ºç©ºï¼Œé•¿åº¦æ˜¯å¦æ˜¯6ä½ï¼Œæ˜¯å¦æ˜¯çº¯æ•°å­—ï¼Œä¸¤æ¬¡è¾“å…¥æ˜¯å¦ä¸€è‡´
 
-				if (CheckPassword.checkPassword(user_password, user_repassword) == false) {
+			 	if (CheckPassword.checkPassword(user_password, user_repassword) == false) {
 
 					out.print(
-							"<script language='javascript'>alert('ÃÜÂëÉèÖÃ´íÎó£¬ÇëÖØĞÂÊäÈë!');window.location.href='register_2.jsp'</script>");
+							"<script language='javascript'>alert('å¯†ç è®¾ç½®é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥!');window.location.href='register_2.jsp'</script>");
 
 				} else {
 					map.put("user_password", user_password);
-					System.out.println("´«µ½¶ş¼¶Ò³Ãæºó£º:"+map.get("user_card"));
+					System.out.println("ä¼ åˆ°äºŒçº§é¡µé¢åï¼š:"+map.get("user_card"));
 					if(UpdateDBA.insert(map)==false){
 						System.out.println(map);
 						out.print(
-								"<script language='javascript'>alert('·¢ÉúÏµÍ³´íÎó£¡');window.location.href='index.html';</script>");
+								"<script language='javascript'>alert('å‘ç”Ÿç³»ç»Ÿé”™è¯¯ï¼');window.location.href='index.html';</script>");
 				
 					}else{
-						System.out.println("´«µ½¶ş¼¶Ò³Ãæ£¬Èë¿â³É¹¦ºó£º:"+map.get("user_card"));
+						System.out.println("ä¼ åˆ°äºŒçº§é¡µé¢ï¼Œå…¥åº“æˆåŠŸåï¼š:"+map.get("user_card"));
 						map.put("user_card",null);
 						out.print(
-								"<script language='javascript'>alert('³É¹¦´´½¨ĞÂ¿¨');window.location.href='index.html';</script>");
-						System.out.println("´´½¨³É¹¦£¬Ïú»ÙmapÖĞµÄ¿¨ºÅºó:"+map.get("user_card"));
+								"<script language='javascript'>alert('æˆåŠŸåˆ›å»ºæ–°å¡');window.location.href='index.html';</script>");
+						System.out.println("åˆ›å»ºæˆåŠŸï¼Œé”€æ¯mapä¸­çš„å¡å·å:"+map.get("user_card"));
 						map.clear();
 						session.invalidate();
 					}
@@ -62,17 +62,17 @@ public class Register_2Servlet extends HttpServlet {
 				}
 			} else {
 				session.invalidate();
-				// ÖØ¸´Ìá½»
+				// é‡å¤æäº¤
 				out.println(
 						"<script language = 'javascript'>window.location.href='index.html';</script>");
 				
 			}
 
-			// Ö´ĞĞ´ÎÊı³¬ÏŞ
+			// æ‰§è¡Œæ¬¡æ•°è¶…é™
 		} else {
-			// ÃÜÂëÊäÈë´íÎó´ÎÊı³¬¹ı10´Î£¬ÍË³ö°ì¿¨
+			// å¯†ç è¾“å…¥é”™è¯¯æ¬¡æ•°è¶…è¿‡10æ¬¡ï¼Œé€€å‡ºåŠå¡
 			out.println(
-					"<script language = 'javascript'>alert('ÃÜÂëÊäÈë´íÎó³¬¹ı10´Î£¡ÍË³öÏµÍ³  ');window.location.href = 'index.html'</script>");
+					"<script language = 'javascript'>alert('å¯†ç è¾“å…¥é”™è¯¯è¶…è¿‡10æ¬¡ï¼é€€å‡ºç³»ç»Ÿ  ');window.location.href = 'index.html'</script>");
 			session.invalidate();
 
 		}
