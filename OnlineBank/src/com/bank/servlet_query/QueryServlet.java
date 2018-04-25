@@ -31,25 +31,25 @@ public class QueryServlet extends HttpServlet {
 		String tokenValue = request.getParameter("tokenValue");
 		Object token = session.getAttribute("token4");
 		response.setContentType("text/html;charset=utf-8");
-		// ÊÇ·ñÖØ¸´Ìá½»
+		// æ˜¯å¦é‡å¤æäº¤
 		if (token != null && token.equals(tokenValue)) {
 
-			// ¿¨ºÅÃÜÂëÊÇ·ñÎª¿Õ
+			// å¡å·å¯†ç æ˜¯å¦ä¸ºç©º
 			if ("".equals(user_card) || "".equals(user_password)) {
 				out.println(
-						"<script language = 'javascript'>alert('¿¨ºÅÃÜÂë²»ÄÜÎª¿Õ.');window.location.href = 'query.jsp'</script>");
+						"<script language = 'javascript'>alert('å¡å·å¯†ç ä¸èƒ½ä¸ºç©º.');window.location.href = 'query.jsp'</script>");
 			} else {
-				// ¿¨ºÅÊÇ·ñ´æÔÚ
+				// å¡å·æ˜¯å¦å­˜åœ¨
 				if (CheckCard.checkCard(user_card) == false) {
 					out.println(
-							"<script language = 'javascript'>alert('¿¨ºÅ²»´æÔÚ»ò·Ç±¾ĞĞÒøĞĞ¿¨£¬ÇëÖØĞÂÊäÈë.');window.location.href = 'query.jsp'</script>");
+							"<script language = 'javascript'>alert('å¡å·ä¸å­˜åœ¨æˆ–éæœ¬è¡Œé“¶è¡Œå¡ï¼Œè¯·é‡æ–°è¾“å…¥.');window.location.href = 'query.jsp'</script>");
 				} else {
-					// ¿¨ºÅ´æÔÚ£¬ÑéÖ¤ÃÜÂëÊÇ·ñÕıÈ·
+					// å¡å·å­˜åœ¨ï¼ŒéªŒè¯å¯†ç æ˜¯å¦æ­£ç¡®
 					if (CheckPasswordIsRight.checkPassword(user_card, user_password) == false) {
 						out.println(
-								"<script language = 'javascript'>alert('ÃÜÂëÊäÈë´íÎó£¡ÇëÖØĞÂÊäÈë.');window.location.href = 'query.jsp'</script>");
+								"<script language = 'javascript'>alert('å¯†ç è¾“å…¥é”™è¯¯ï¼è¯·é‡æ–°è¾“å…¥.');window.location.href = 'query.jsp'</script>");
 					} else {
-						// ¿¨ºÅÃÜÂë¶¼Ã»ÓĞÎÊÌâ,·µ»Ø½á¹û¼¯,²¢ÇÒ½«¿¨ºÅÌí¼Óµ½sessionÖĞ
+						// å¡å·å¯†ç éƒ½æ²¡æœ‰é—®é¢˜,è¿”å›ç»“æœé›†,å¹¶ä¸”å°†å¡å·æ·»åŠ åˆ°sessionä¸­
 						map = GetData.getData(user_card);
 						session.setAttribute("user_card", user_card);
 						session.setAttribute("user_name", map.get("user_name"));
@@ -62,7 +62,7 @@ public class QueryServlet extends HttpServlet {
 				}
 			}
 		} else {
-			// ÖØ¸´Ìá½»
+			// é‡å¤æäº¤
 			out.println(
 					"<script language = 'javascript'>alert('Sorry! You have submitted information! Please do not submit again!!!!');window.location.href='queryResult.jsp';</script>");
 		}
@@ -70,5 +70,5 @@ public class QueryServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
-	}
+	} 
 }
