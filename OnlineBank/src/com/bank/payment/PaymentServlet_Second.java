@@ -28,55 +28,55 @@ public class PaymentServlet_Second extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html;charset=utf-8");
-		String user_card = request.getParameter("user_card");// Ö§¸¶¿¨ºÅ
-		String user_password = request.getParameter("user_password");// Ö§¸¶ÃÜÂë
+		String user_card = request.getParameter("user_card");// æ”¯ä»˜å¡å·
+		String user_password = request.getParameter("user_password");// æ”¯ä»˜å¯†ç 
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		Map<String, String> map = new HashMap<String, String>();
-		String count = session.getAttribute("count").toString();//×ªÕË½ğ¶î
+		String count = session.getAttribute("count").toString();//è½¬è´¦é‡‘é¢
 		double amount = Double.parseDouble(count);
-		String phone = session.getAttribute("phone").toString();//³äÖµºÅÂë
-		// ÃÜÂë´íÎóÈı´Î
+		String phone = session.getAttribute("phone").toString();//å……å€¼å·ç 
+		// å¯†ç é”™è¯¯ä¸‰æ¬¡
 		if (num < 3) {
-			// ÑéÖ¤¿¨ºÅÃÜÂëÊÇ·ñÎª¿Õ
+			// éªŒè¯å¡å·å¯†ç æ˜¯å¦ä¸ºç©º
 			if ("".equals(user_card) || "".equals(user_password)) {
 				out.print(
-						"<script language='javascript'>alert('¿¨ºÅÃÜÂë²»ÄÜÎª¿ÕÇëÖØĞÂÊäÈë£¡');window.location.href='payment_2.jsp';</script>");
+						"<script language='javascript'>alert('å¡å·å¯†ç ä¸èƒ½ä¸ºç©ºè¯·é‡æ–°è¾“å…¥ï¼');window.location.href='payment_2.jsp';</script>");
 			} else {
-				// ÑéÖ¤¿¨ºÅÊÇ·ñ´æÔÚ
+				// éªŒè¯å¡å·æ˜¯å¦å­˜åœ¨
 				if (CheckCard.checkCard(user_card) == false) {
 					out.print(
-							"<script language='javascript'>alert('¿¨ºÅ²»´æÔÚ»ò·Ç±¾ĞĞ¿¨ºÅ£¡ÇëÖØĞÂÊäÈë£¡');window.location.href='payment_2.jsp';</script>");
+							"<script language='javascript'>alert('å¡å·ä¸å­˜åœ¨æˆ–éæœ¬è¡Œå¡å·ï¼è¯·é‡æ–°è¾“å…¥ï¼');window.location.href='payment_2.jsp';</script>");
 				} else {
-					// ¿¨ºÅ´æÔÚ,ÑéÖ¤ÃÜÂë
+					// å¡å·å­˜åœ¨,éªŒè¯å¯†ç 
 					if (CheckPasswordIsRight.checkPassword(user_card, user_password) == false) {
 						num++;
 						out.println(
-								"<script language = 'javascript'>alert('ÃÜÂëÊäÈë´íÎó£¡ÇëÖØĞÂÊäÈë£¡');window.location.href = 'payment_2.jsp'</script>");
-						// ¿¨ºÅÃÜÂëÕıÈ·£¬¼ì²éÓà¶îÊÇ·ñ³ä×ã
+								"<script language = 'javascript'>alert('å¯†ç è¾“å…¥é”™è¯¯ï¼è¯·é‡æ–°è¾“å…¥ï¼');window.location.href = 'payment_2.jsp'</script>");
+						// å¡å·å¯†ç æ­£ç¡®ï¼Œæ£€æŸ¥ä½™é¢æ˜¯å¦å……è¶³
 					} else {
-						// Óà¶î²»×ã
+						// ä½™é¢ä¸è¶³
 						if (CheckBalance.checkBalance(count, user_card) == false) {
 							out.println(
-									"<script language = 'javascript'>alert('ÕË»§Óà¶î²»×ã!');window.location.href = 'payment_1.jsp'</script>");
-							//Óà¶î³ä×ã
+									"<script language = 'javascript'>alert('è´¦æˆ·ä½™é¢ä¸è¶³!');window.location.href = 'payment_1.jsp'</script>");
+							//ä½™é¢å……è¶³
 						} else {
-							//¿ªÊ¼×ªÕÊÇ°£¬ÏÈĞ´ÈÕÖ¾
-							map.put("pay_card", user_card);	//¸¶¿î¿¨ºÅ
-							map.put("get_card", phone);    //ÊÕ¿î¿¨ºÅ
-							map.put("get_name", "»°·Ñ³äÖµ");	//ÊÕ¿îĞÕÃû
+							//å¼€å§‹è½¬å¸å‰ï¼Œå…ˆå†™æ—¥å¿—
+							map.put("pay_card", user_card);	//ä»˜æ¬¾å¡å·
+							map.put("get_card", phone);    //æ”¶æ¬¾å¡å·
+							map.put("get_name", "è¯è´¹å……å€¼");	//æ”¶æ¬¾å§“å
 							map.put("balance_amount", count);
 							Log.isLogIn(map);
-							//Ö´ĞĞ´æ´¢¹ı³Ìtop
+							//æ‰§è¡Œå­˜å‚¨è¿‡ç¨‹top
 							if(Top.isSuccess(user_card, phone, amount)==false){
-								//³öÏÖÊÂÎñÄÚ²¿¹ÊÕÏ
+								//å‡ºç°äº‹åŠ¡å†…éƒ¨æ•…éšœ
 								out.println(
-										"<script language = 'javascript'>alert('ÏµÍ³´íÎó');window.location.href = 'index.html'</script>");
+										"<script language = 'javascript'>alert('ç³»ç»Ÿé”™è¯¯');window.location.href = 'index.html'</script>");
 								session.invalidate();
 							}else{
-								//×ªÕË³É¹¦
+								//è½¬è´¦æˆåŠŸ
 								out.println(
-										"<script language = 'javascript'>alert('³äÖµ³É¹¦');window.location.href = 'index.html'</script>");
+										"<script language = 'javascript'>alert('å……å€¼æˆåŠŸ');window.location.href = 'index.html'</script>");
 								session.invalidate();
 						
 							}
@@ -86,7 +86,7 @@ public class PaymentServlet_Second extends HttpServlet {
 				}
 			}
 		} else {
-			// ÃÜÂëÊäÈë´íÎó´ÎÊı³¬¹ı3´Î£¬ÍË³ö³äÖµ
+			// å¯†ç è¾“å…¥é”™è¯¯æ¬¡æ•°è¶…è¿‡3æ¬¡ï¼Œé€€å‡ºå……å€¼
 			out.println(
 					"<script language = 'javascript'>alert('Password input error 3 times!  You can not transfer the money today.');window.location.href = 'index.html'</script>");
 			session.invalidate();
@@ -98,3 +98,4 @@ public class PaymentServlet_Second extends HttpServlet {
 		doPost(req, resp);
 	}
 }
+ 
