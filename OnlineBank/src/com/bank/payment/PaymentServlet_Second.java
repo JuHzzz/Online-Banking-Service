@@ -79,7 +79,7 @@ public class PaymentServlet_Second extends HttpServlet {
 										"<script language = 'javascript'>alert('充值成功');window.location.href = 'index.html'</script>");
 								session.invalidate();
 						
-							}
+							} 
 							
 						}
 					}
